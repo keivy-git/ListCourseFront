@@ -1,0 +1,16 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
+
+    <label for="name">Nom :</label><br>
+    <input type="text" id="name" formControlName="name"><br>
+    <p *ngIf=" !(contactForm.controls.name.valid) ">Ce champ est invalide</p>
+
+    <label for="email">Email:</label><br>
+    <input type="text" formControlName="email"><br>
+    <p *ngIf=" !(contactForm.controls.email.valid) ">Ce champ est invalide</p>
+
+    <label for="message">Message:</label><br>
+    <textarea formControlName="message"></textarea><br>
+    <p *ngIf=" !(contactForm.controls.message.valid) ">Ce champ est invalide</p>
+
+    <input type="submit" value="envoyer">
+</form>
