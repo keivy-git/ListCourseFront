@@ -1,8 +1,22 @@
-<div>
-    <label for="email">Email</label>
-    <input type="email"><br>
-    <label for="password">Votre mot de passe</label>
-    <input type="password"><br>
+<mat-card class="login_card">
+    <form class="login">
+        <mat-card-header>
+            <mat-card-title>Se connecter</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
 
-    <button (click)="redirect()">Se connecter</button>
-</div>
+            <mat-form-field class="champLogin">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="ex: rocher@gmail.com">
+            </mat-form-field><br>
+            <mat-form-field class="champLogin">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput type="password" placeholder="ex: ********* ;)">
+            </mat-form-field> <br>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="redirect()">Se connecter</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

@@ -4,6 +4,9 @@ import { ContactFormComponent } from './contact/contact-form/contact-form.compon
 import { HomeComponent } from './main/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ListComponent } from './auth/user/list/list.component';
+import { CouponComponent } from './main/coupon/coupon.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { ProfilComponent } from './auth/profil/profil.component';
 
 
 const routes: Routes = [
@@ -21,11 +24,23 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'profil',
+    component: ProfilComponent
+  },
+  {
     path: 'contactform',
     component: ContactFormComponent
   },
   { path: 'list',
     component: ListComponent
+  },
+  {
+    path: 'coupon',
+    component: CouponComponent
   }
 
 

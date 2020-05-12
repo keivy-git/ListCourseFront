@@ -1,17 +1,34 @@
-<div cdkDropListGroup>
-    <div class="example-container">
-        <h2>Produit disponible</h2>
+<div class="shoppingList">
+    <h2>{{ title }}</h2>
 
-        <div cdkDropList [cdkDropListData]="items" class="example-list" cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
-        </div>
-    </div>
+    <table mat-table [dataSource]="shoppingList" #tableShoppingList class="mat-elevation-z8">
+        <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef>Article :</th>
+            <td mat-cell *matCellDef="let shoppingList">{{ shoppingList.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let shoppingList" class="action-link">
+                <button (click)="delete(shoppingList)"> X</button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</div><br>
 
-    <div class="example-container">
-        <h2>Liste de course</h2>
 
-        <div cdkDropList [cdkDropListData]="basket" class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of basket" cdkDrag>{{item}}</div>
-        </div>
-    </div>
-</div>
+
+<mat-card class="shopping_card">
+    <form class="shopping" [formGroup]="shoppingForm" (ngSubmit)="post(shoppingForm)">
+        <mat-card-content>
+            <mat-form-field class="champShopping">
+                <mat-label>Ex: ananas</mat-label>
+                <input formControlName="name" matInput placeholder="ex: ananas" />
+            </mat-form-field><br />
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button type="submit">Ajouter</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

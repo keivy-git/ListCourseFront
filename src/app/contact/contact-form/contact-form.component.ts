@@ -10,15 +10,13 @@ import { Router } from '@angular/router';
 })
 export class ContactFormComponent implements OnInit {
 
-@Output()
-messageEmitter = new EventEmitter<string>();
+  @Output()
+  messageEmitter = new EventEmitter<string>();
 
-contactForm: FormGroup;
+  contactForm: FormGroup;
 
   constructor(
     private builder: FormBuilder,
-    private msgServ: MessageService,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -28,12 +26,9 @@ contactForm: FormGroup;
       message: new FormControl('Votre message', [Validators.minLength(20), Validators.maxLength(200), Validators.required])
     })
   }
-onSubmit(form: FormGroup) {
-  console.log(form);
+  onSubmit(form: FormGroup) {
+    console.log(form);
 
-  if(this.contactForm.valid)
-  this.msgServ.addMessage(this.contactForm.value.message);
-  else
-    alert("Le formulaire est invalide");
-}
+
+  }
 }

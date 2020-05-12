@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -15,6 +17,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
+    AppRoutingModule
   ],
   exports:  [
     ContactInfoComponent

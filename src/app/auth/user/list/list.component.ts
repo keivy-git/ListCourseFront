@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -15,9 +16,8 @@ export class ListComponent implements OnInit {
 
 
   title = 'Liste des utilisateurs inscrits';
-  // userlist: Observable<User[]>;
   userList:User[];
-
+  apiUrl = environment.apiUrl;
   
   constructor(
     private httpClient: HttpClient
@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.httpClient.get<User[]>('http://localhost:8080/api-user/').subscribe(list=>{
+    this.httpClient.get<User[]>(this.apiUrl + "api-user/").subscribe(list=>{
       this.userList = list;
 
       });

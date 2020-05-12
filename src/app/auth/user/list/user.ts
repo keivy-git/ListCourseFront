@@ -4,6 +4,6 @@ export interface User {
     firstName: string;
     name: string;
     dateBirth: Date;
-    roles: string;
+    user_role: string;
 
 }
