@@ -1,26 +1,29 @@
-table {
-    align-content: center;
-    width: 80%;
-}
+/** Formulaire et champ */
 
-H2 {
-    text-align: center;
-}
-
-.coupon {
+.form {
     min-width: 150px;
     max-width: 500px;
     width: 80%;
+    margin: 0 auto;
 }
 
-.champCoupon {
+.champ {
     width: 80%;
 }
 
-.coupon_card {
+.card {
     max-width: 400px;
+    margin: 0 auto;
 }
 
-.mat-form-field+.mat-form-field {
-    margin-left: 8px;
+/** liste */
+
+table {
+    align-content: center;
+    width: 100%;
+}
+
+.list {
+    margin: 0 auto;
+    width: 70%;
 }

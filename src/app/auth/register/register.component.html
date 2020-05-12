@@ -1,1 +1,30 @@
-<p>register works!</p>
+<mat-card class="card">
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="post(registerForm)">
+        <mat-card-header>
+            <mat-card-title>S'enregistrer</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field class="champ">
+                <mat-label>Prénom</mat-label>
+                <input formControlName="firstName" matInput type="text" placeholder="ex: Charle">
+            </mat-form-field><br>
+            <mat-form-field class="champ">
+                <mat-label>Nom</mat-label>
+                <input formControlName="name" matInput type="text" placeholder="ex: dupont">
+            </mat-form-field><br>
+            <mat-form-field class=" champ">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput placeholder="ex: rocher@gmail.com">
+            </mat-form-field><br>
+            <mat-form-field class="champ">
+                <mat-label>Mot de passe</mat-label>
+                <input formControlName="password" matInput type="password" placeholder="ex: ********* ;)">
+            </mat-form-field> <br>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button type="submit">
+                Envoyer
+            </button>
+        </mat-card-actions>
+    </form>
+</mat-card>

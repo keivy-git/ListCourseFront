@@ -4,9 +4,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfilComponent } from './profil/profil.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../shared/service/auth.service';
 
 
 
@@ -15,7 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ProfilComponent
+    ProfilComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +27,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatButtonModule
 
-  ], 
+  ],
   exports: [
     LoginComponent,
     RegisterComponent

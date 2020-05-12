@@ -1,8 +1,9 @@
 table {
     align-content: center;
-    width: 60%;
+    width: 100%;
 }
 
-H2 {
-    text-align: center;
+.list {
+    margin: 0 auto;
+    width: 70%;
 }

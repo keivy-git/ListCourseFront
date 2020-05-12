@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 import { Coupon } from "./coupon";
 import {
   FormBuilder,
@@ -7,9 +6,8 @@ import {
   FormControl,
   Validators,
 } from "@angular/forms";
-import { environment } from "src/environments/environment";
 import { MatTable } from "@angular/material/table";
-import { MatDialog } from '@angular/material/dialog';
+import { CouponService } from './service/coupon.service';
 
 @Component({
   selector: "app-coupon",
@@ -27,7 +25,6 @@ export class CouponComponent implements OnInit {
     "action",
   ];
   title = "Liste des coupons";
-  apiUrl = environment.apiUrl;
   couponList: Coupon[];
   couponForm: FormGroup;
   panelOpenState = false;
@@ -38,24 +35,22 @@ export class CouponComponent implements OnInit {
 
   constructor(
     private builder: FormBuilder,
-    private apiCoupon: HttpClient,
+    private couponService: CouponService,
   ) {
 
   }
 
 
   ngOnInit(): void {
-    this.Get();
+    this.get();
     this.formControle();
   }
 
   // On affiche la liste des coupons
-  Get() {
-    this.apiCoupon
-      .get<Coupon[]>(this.apiUrl + "api-coupon/")
+  get() {
+    this.couponService.get()
       .subscribe((list) => {
         this.couponList = list;
-        this.table.renderRows();
       });
   }
 
@@ -78,21 +73,22 @@ export class CouponComponent implements OnInit {
       dateEnd: form.value.dateEnd,
     };
     ///console.log('coucou', toAdd);
-    if (this.couponForm.valid)
-      this.apiCoupon
-        .post<Coupon>(this.apiUrl + "api-coupon/create", toAdd)
+    if (this.couponForm.valid) {
+      this.couponService.post(toAdd)
         .subscribe((coupon) => {
           this.couponList.push(coupon);
           this.table.renderRows();
           form.reset();
         });
-    else alert("Formulaire non valide");
+    } else {
+      alert("Formulaire non valide");
+    }
   }
 
   ///TOdoooo
   delete(coupon) {
 
-    this.apiCoupon.delete<Coupon>(this.apiUrl + "api-coupon/delete/" + coupon.idCoupon, coupon)
+    this.couponService.delete(coupon)
       .subscribe((responses) => {
         if (responses) {
           let index = this.couponList.indexOf(coupon, 0);
@@ -100,7 +96,6 @@ export class CouponComponent implements OnInit {
           if (index > -1) {
             this.couponList.splice(index)
             this.table.renderRows();
-            console.log('coupon supprimer :', coupon)
           }
         }
       })
@@ -108,7 +103,7 @@ export class CouponComponent implements OnInit {
   }
   // Toodooo
   update(coupon) {
-    this.apiCoupon.put<Coupon>(this.apiUrl + "api-coupon/update/" + coupon.idCoupon, coupon)
+    this.couponService.update(coupon)
       .subscribe((resp) => {
         if (resp) {
           let index = this.couponList.indexOf(coupon, 0);

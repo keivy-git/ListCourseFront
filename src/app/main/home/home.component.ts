@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ShoppingList } from './shopping-list';
 import { environment } from 'src/environments/environment';
 import { MatTable } from '@angular/material/table';
-import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ShoppingListService } from './service/shopping-list.service';
 
@@ -18,12 +17,8 @@ export class HomeComponent implements OnInit {
     "action",
   ];
   title = "Liste de course";
-  apiUrl = environment.apiUrl;
   shoppingList: ShoppingList[];
   shoppingForm: FormGroup;
-
-  // toppings = new FormControl();
-  // toppingList: string[] = ['Fromage', 'champignon', 'oignon', 'Saucisse', 'Tomate'];
 
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
@@ -34,18 +29,18 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.Get();
+    this.get();
     this.formControle();
   }
 
-  Get() {
+  get() {
     this.shopListService.get()
       .subscribe((list) => {
         this.shoppingList = list;
       });
   }
 
-  // on controle le contenu du formulaire
+  /** on controle le contenu du formulaire*/
   formControle() {
     this.shoppingForm = this.builder.group({
       name: new FormControl("", [Validators.required]),
@@ -78,11 +73,7 @@ export class HomeComponent implements OnInit {
           }
         }
       })
-
   }
-
-
-
 }
 
 

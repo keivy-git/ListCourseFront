@@ -1,4 +1,29 @@
+/** Formulaire et champ */
+
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.champ {
+    width: 80%;
+}
+
+.card {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/** liste */
+
 table {
     align-content: center;
-    width: 30%;
+    width: 100%;
+}
+
+.list {
+    margin: 0 auto;
+    width: 20%;
 }

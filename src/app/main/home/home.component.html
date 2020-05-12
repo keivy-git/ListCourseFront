@@ -1,4 +1,4 @@
-<div class="shoppingList">
+<div class="list">
     <h2>{{ title }}</h2>
 
     <table mat-table [dataSource]="shoppingList" #tableShoppingList class="mat-elevation-z8">
@@ -19,10 +19,10 @@
 
 
 
-<mat-card class="shopping_card">
+<mat-card class="card">
     <form class="shopping" [formGroup]="shoppingForm" (ngSubmit)="post(shoppingForm)">
         <mat-card-content>
-            <mat-form-field class="champShopping">
+            <mat-form-field class="champ">
                 <mat-label>Ex: ananas</mat-label>
                 <input formControlName="name" matInput placeholder="ex: ananas" />
             </mat-form-field><br />

@@ -1,4 +1,4 @@
-<div class="couponList">
+<div class="list">
     <h2>{{ title }}</h2>
 
     <table mat-table [dataSource]="couponList" #tableCoupon class="mat-elevation-z8">
@@ -53,26 +53,26 @@
         </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <mat-card class="coupon_card">
-        <form class="coupon" [formGroup]="couponForm" (ngSubmit)="post(couponForm)">
+    <mat-card class="card">
+        <form class="form" [formGroup]="couponForm" (ngSubmit)="post(couponForm)">
             <mat-card-header>
                 <mat-card-title>Ajouter un coupon</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <mat-form-field class="champCoupon">
+                <mat-form-field class="champ">
                     <mat-label>Nom</mat-label>
                     <input formControlName="name" matInput placeholder="ex : -20% sur les fruits secs" />
                 </mat-form-field><br />
-                <mat-form-field class="champCoupon">
+                <mat-form-field class="champ">
                     <mat-label>Descripton</mat-label>
                     <textarea formControlName="description" matInput
                         placeholder="ex : acheter deux paquets de fruit sec et recevez 20% de reduction sur le 2eme paquet"></textarea>
                 </mat-form-field><br />
-                <mat-form-field class="champCoupon">
+                <mat-form-field class="champ">
                     <mat-label>Date début</mat-label>
                     <input formControlName="dateBegin" matInput type="date" />
                 </mat-form-field><br />
-                <mat-form-field class="champCoupon">
+                <mat-form-field class="champ">
                     <mat-label>Date de fin</mat-label>
                     <input formControlName="dateEnd" matInput type="date" />
                 </mat-form-field><br />

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ShoppingList } from '../shopping-list';
-import { HomeComponent } from '../home.component';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,6 @@ import { HomeComponent } from '../home.component';
 export class ShoppingListService {
 
   apiUrl = environment.apiUrl;
-  shoppingList: ShoppingList[];
 
   constructor(
     private api: HttpClient,

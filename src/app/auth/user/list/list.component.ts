@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from './user';
-import { environment } from 'src/environments/environment';
-
+import { AuthService } from 'src/app/shared/service/auth.service';
 
 
 @Component({
@@ -12,24 +10,26 @@ import { environment } from 'src/environments/environment';
 })
 export class ListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'prenom', 'nom', 'datebirth', 'roles'];
+  displayedColumns: string[] = ['id', 'prenom', 'nom', 'roles'];
 
 
   title = 'Liste des utilisateurs inscrits';
-  userList:User[];
-  apiUrl = environment.apiUrl;
-  
+  userList: User[];
+
   constructor(
-    private httpClient: HttpClient
+    private auth: AuthService,
   ) { }
 
-
   ngOnInit(): void {
+    this.get();
+  }
 
-    this.httpClient.get<User[]>(this.apiUrl + "api-user/").subscribe(list=>{
+  get() {
+    this.auth.get().subscribe((list) => {
       this.userList = list;
 
-      });
-      
+    });
+  }
+
 }
-}
+
