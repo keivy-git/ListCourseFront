@@ -7,44 +7,35 @@ import { ListComponent } from './auth/user/list/list.component';
 import { CouponComponent } from './main/coupon/coupon.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProfilComponent } from './auth/profil/profil.component';
+import { AuthGuardService } from './shared/service/auth-guard.service';
 
 
 const routes: Routes = [
- {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
- },
   {
-    path: 'home',
-    component: HomeComponent
+    path: '', redirectTo: 'login', pathMatch: 'full'
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'home', component: HomeComponent, canActivate: [AuthGuardService]
   },
   {
-    path: 'register',
-    component: RegisterComponent
+    path: 'login', component: LoginComponent
   },
   {
-    path: 'profil',
-    component: ProfilComponent
+    path: 'register', component: RegisterComponent
   },
   {
-    path: 'contactform',
-    component: ContactFormComponent
-  },
-  { path: 'list',
-    component: ListComponent
+    path: 'profil', component: ProfilComponent, canActivate: [AuthGuardService]
   },
   {
-    path: 'coupon',
-    component: CouponComponent
+    path: 'contactform', component: ContactFormComponent
+  },
+  {
+    path: 'list', component: ListComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: 'coupon', component: CouponComponent, canActivate: [AuthGuardService]
   }
-
-
-]; 
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

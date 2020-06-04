@@ -6,54 +6,56 @@
       </button>
       <mat-menu #menu="matMenu">
 
-        <button mat-menu-item>
-          <a routerLink="home">
+
+        <a *ngIf="connected()" routerLink="home">
+          <button mat-menu-item>
             <mat-icon>list_alt</mat-icon>
             <span>Ma liste</span>
-          </a>
-        </button>
-        <button mat-menu-item>
-          <a routerLink="coupon">
+          </button>
+        </a>
+
+
+        <a *ngIf="connected()" routerLink="coupon">
+          <button mat-menu-item>
             <mat-icon>redeem</mat-icon>
             <span>Mes coupons</span>
-          </a>
+          </button>
+        </a>
 
-        </button>
-        <button mat-menu-item>
-          <a routerLink="list">
+        <a *ngIf="connected()" routerLink="list">
+          <button mat-menu-item>
             <mat-icon>person</mat-icon>
             <span>Liste des utilisateurs</span>
-          </a>
-
-        </button>
-        <button mat-menu-item>
-          <a routerLink="profil">
+          </button>
+        </a>
+        <a *ngIf="connected()" routerLink="profil">
+          <button mat-menu-item>
             <mat-icon>person</mat-icon>
             <span>Mon profil</span>
-          </a>
+          </button>
+        </a>
 
-        </button>
-        <button mat-menu-item>
-          <a routerLink="login">
+        <a *ngIf="!connected()" routerLink="login">
+          <button mat-menu-item>
             <mat-icon>power_settings_new</mat-icon>
             <span>Se connecter</span>
-          </a>
+          </button>
+        </a>
 
-        </button>
-        <button class="disabled" mat-menu-item disabled>
-          <a routerLink="unlogin">
+        <a *ngIf="connected()" (click)="logOut()">
+          <button mat-menu-item>
             <mat-icon>power_settings_new</mat-icon>
             <span>Se déconnecter</span>
-          </a>
+          </button>
+        </a>
 
-        </button>
-        <button mat-menu-item>
-          <a routerLink="register">
+        <a *ngIf="!connected()" routerLink="register">
+          <button mat-menu-item>
             <mat-icon>power_settings_new</mat-icon>
             <span>S'enregistrer</span>
-          </a>
+          </button>
+        </a>
 
-        </button>
       </mat-menu>
     </div>
     <div class="right">

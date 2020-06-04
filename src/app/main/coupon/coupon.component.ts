@@ -66,13 +66,7 @@ export class CouponComponent implements OnInit {
   //on soummet un formulaire pour ajouter un coupon
 
   post(form: FormGroup) {
-    let toAdd = {
-      name: form.value.name,
-      description: form.value.description,
-      dateBegin: form.value.dateBegin,
-      dateEnd: form.value.dateEnd,
-    };
-    ///console.log('coucou', toAdd);
+    let toAdd = form.value
     if (this.couponForm.valid) {
       this.couponService.post(toAdd)
         .subscribe((coupon) => {

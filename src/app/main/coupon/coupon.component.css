@@ -23,7 +23,7 @@ table {
     width: 100%;
 }
 
-.list {
+.list, .expansion {
     margin: 0 auto;
     width: 70%;
 }

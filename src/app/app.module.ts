@@ -12,7 +12,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { ContactModule } from "./contact/contact.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthModule } from "./auth/auth.module";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { MatTableModule } from "@angular/material/table";
 import { ListComponent } from "./auth/user/list/list.component";
 import { CouponComponent } from "./main/coupon/coupon.component";
@@ -22,6 +22,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AuthService } from './shared/service/auth.service';
+import { AuthGuardService } from './shared/service/auth-guard.service';
+import { BasicAuthHtppInterceptorService } from './shared/service/basic-auth-htpp-interceptor.service';
 
 
 @NgModule({
@@ -54,6 +57,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatExpansionModule
   ],
   providers: [
+    AuthService,
+    AuthGuardService,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })

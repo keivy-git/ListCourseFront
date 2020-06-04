@@ -6,17 +6,17 @@
         <mat-card-content>
 
             <mat-form-field class="champ">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="ex: rocher@gmail.com">
+                <mat-label>Votre nom</mat-label>
+                <input matInput placeholder="Votre nom" name="name" [(ngModel)]="username">
             </mat-form-field><br>
             <mat-form-field class="champ">
                 <mat-label>Mot de passe</mat-label>
-                <input matInput type="password" placeholder="ex: ********* ;)">
+                <input matInput type="password" placeholder="ex: ********* ;)" name="password" [(ngModel)]="password">
             </mat-form-field> <br>
 
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button (click)="redirect()">Se connecter</button>
+            <button mat-raised-button (click)="checkLogin()">Se connecter</button>
         </mat-card-actions>
     </form>
 </mat-card>

@@ -32,54 +32,48 @@
                 <button (click)="delete(coupon)">Delete</button>
             </td>
         </ng-container>
-        <!-- tooodoooo -->
-        <!-- <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Action </th>
-            <td mat-cell *matCellDef="let element" class="action-link">
-                <a (click)="">Edit</a> |
-                <a (click)="">Delete</a>
-            </td>
-        </ng-container> -->
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let coupon; columns: displayedColumns; let i = index"></tr>
     </table>
 </div><br>
 
-<mat-expansion-panel>
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            Ajouter un coupon
-        </mat-panel-title>
-    </mat-expansion-panel-header>
+<div class="expansion">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Ajouter un coupon
+            </mat-panel-title>
+        </mat-expansion-panel-header>
 
-    <mat-card class="card">
-        <form class="form" [formGroup]="couponForm" (ngSubmit)="post(couponForm)">
-            <mat-card-header>
-                <mat-card-title>Ajouter un coupon</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <mat-form-field class="champ">
-                    <mat-label>Nom</mat-label>
-                    <input formControlName="name" matInput placeholder="ex : -20% sur les fruits secs" />
-                </mat-form-field><br />
-                <mat-form-field class="champ">
-                    <mat-label>Descripton</mat-label>
-                    <textarea formControlName="description" matInput
-                        placeholder="ex : acheter deux paquets de fruit sec et recevez 20% de reduction sur le 2eme paquet"></textarea>
-                </mat-form-field><br />
-                <mat-form-field class="champ">
-                    <mat-label>Date début</mat-label>
-                    <input formControlName="dateBegin" matInput type="date" />
-                </mat-form-field><br />
-                <mat-form-field class="champ">
-                    <mat-label>Date de fin</mat-label>
-                    <input formControlName="dateEnd" matInput type="date" />
-                </mat-form-field><br />
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button type="submit">Envoyer</button>
-            </mat-card-actions>
-        </form>
-    </mat-card>
-</mat-expansion-panel>
+        <mat-card class="card">
+            <form class="form" [formGroup]="couponForm" (ngSubmit)="post(couponForm)">
+                <mat-card-header>
+                    <mat-card-title>Ajouter un coupon</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-form-field class="champ">
+                        <mat-label>Nom</mat-label>
+                        <input formControlName="name" matInput placeholder="ex : -20% sur les fruits secs" />
+                    </mat-form-field><br />
+                    <mat-form-field class="champ">
+                        <mat-label>Descripton</mat-label>
+                        <textarea formControlName="description" matInput
+                            placeholder="ex : acheter deux paquets de fruit sec et recevez 20% de reduction sur le 2eme paquet"></textarea>
+                    </mat-form-field><br />
+                    <mat-form-field class="champ">
+                        <mat-label>Date début</mat-label>
+                        <input formControlName="dateBegin" matInput type="date" />
+                    </mat-form-field><br />
+                    <mat-form-field class="champ">
+                        <mat-label>Date de fin</mat-label>
+                        <input formControlName="dateEnd" matInput type="date" />
+                    </mat-form-field><br />
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button type="submit">Envoyer</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </mat-expansion-panel>
+</div><br>

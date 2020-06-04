@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailValidator } from '@angular/forms';
+import { EmailValidator, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,31 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  email: string= '';
-  password: string= '';
+  loginForm: FormGroup;
+  username = '';
+  password = '';
+  invalidLogin = false;
 
   constructor(
     private router: Router,
+    private loginService: AuthService,
+    private builder: FormBuilder
   ) { }
 
   ngOnInit(): void {
   }
-redirect() {
-  alert("Connexion tenté")
-  this.router.navigateByUrl("/home");
-}
+
+
+  checkLogin() {
+    (this.loginService.authenticate(this.username, this.password).subscribe(
+      data => {
+        this.router.navigate(['home'])
+        this.invalidLogin = false
+      },
+      error => {
+        this.invalidLogin = true
+      }
+    )
+    );
+  }
 }

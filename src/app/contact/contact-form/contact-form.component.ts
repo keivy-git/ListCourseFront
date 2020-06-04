@@ -1,7 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { MessageService } from '../contact-service/message.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,8 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ContactFormComponent implements OnInit {
 
-  @Output()
-  messageEmitter = new EventEmitter<string>();
+
 
   contactForm: FormGroup;
 
@@ -21,9 +18,9 @@ export class ContactFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactForm = this.builder.group({
-      name: new FormControl('Votre nom', [Validators.minLength(4), Validators.required]),
-      email: new FormControl('Votre Email', [Validators.email, Validators.required]),
-      message: new FormControl('Votre message', [Validators.minLength(20), Validators.maxLength(200), Validators.required])
+      name: new FormControl('', [Validators.minLength(4), Validators.required]),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      message: new FormControl('', [Validators.minLength(20), Validators.maxLength(200), Validators.required])
     })
   }
   onSubmit(form: FormGroup) {
